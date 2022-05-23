@@ -1,12 +1,47 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Rating from '../Admin/Rating';
 import single1 from './../../_assets/images/shop/single-1.jpg';
 
 const SingleProduct = () => {
 
+  // params
   const { slug } = useParams();
 
-  console.log(slug);
+  // related product state
+  const [related, setRelated] = useState([]);
+  // console.log(related.name);
+  // single product state
+  const [singleProduct, setSingleProduct] = useState({
+    id          : '',
+    name        : '',
+    price       : '',
+    sprice      : '',
+    categoryId  : '',
+    tagId       : '',
+    desc        : '',
+    photo       : ''
+  });
+
+
+
+  // Get all single product data
+  useEffect( () => {
+
+    // single product
+    axios.get(`http://localhost:5050/products?slug=${slug}`).
+    then(res => {
+      setSingleProduct(res.data[0]);
+    });
+
+    // related product
+    axios.get(`http://localhost:5050/categories/${singleProduct.categoryId}/products`).
+    then(res => {
+      setRelated(res.data);
+    });
+
+  }, [singleProduct, related]);
 
   return (
     <>
@@ -17,7 +52,7 @@ const SingleProduct = () => {
           <div className="row">
             <div className="col-md-6">
               <div data-options="{&quot;animation&quot;: &quot;slide&quot;, &quot;controlNav&quot;: true}" className="flexslider nav-inside control-nav-dark">
-              <img src={ single1 } alt="" />
+              <img src={ singleProduct.photo } alt="" />
                 {/* <ul className="slides">
                   <li>
                     <img src="images/shop/single-1.jpg" alt="" />
@@ -36,20 +71,36 @@ const SingleProduct = () => {
             </div>
             <div className="col-md-5 col-md-offset-1">
               <div className="title mt-0">
-                <h2>Notch Blazer in Longline<span className="red-dot"></span></h2>
+                <h2>{ singleProduct.name }<span className="red-dot"></span></h2>
                 <p className="m-0">Free Shipping Worldwide</p>
               </div>
               <div className="single-product-price">
                 <div className="row">
                   <div className="col-xs-6">
-                    <h3><del>$29.99</del><span>$24.99</span></h3>
+
+                  {
+                    (singleProduct.sprice === '') ?
+                      <h3><span><b>${ singleProduct.price }</b></span></h3>
+                    :
+                    <>
+                      <h3>
+                      <span><b>${ singleProduct.sprice } </b></span>
+                      <span><del>${ singleProduct.price }</del></span>
+                      </h3>
+                    </>
+
+                  }
+
                   </div>
-                  <div className="col-xs-6 text-right"><span className="rating-stars">              <i className="ti-star full"></i><i className="ti-star full"></i><i className="ti-star full"></i><i className="ti-star full"></i><i className="ti-star"></i><span className="hidden-xs">(3 Reviews)</span></span>
+                  <div className="col-xs-6 text-right">
+                    <span className="rating-stars">              
+                      <Rating rate={ singleProduct.rating } />
+                    </span>
                   </div>
                 </div>
               </div>
               <div className="single-product-desc">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis repellat iste natus at impedit quo consequuntur, quam, vel saepe voluptatum minus temporibus excepturi aspernatur labore molestiae fugit tempora veritatis unde.</p>
+                <p>{ singleProduct.desc }</p>
               </div>
               <div className="single-product-add">
                 <form action="#" className="inline-form">
@@ -172,65 +223,36 @@ const SingleProduct = () => {
             </div>
           </div>
         </div>
+
+
         <div className="related-products">
           <h5 className="upper">Related Products</h5>
           <div className="row">
+
+          {
+            related.map((data, index) => 
+
+            data.id === singleProduct.id ?
+            ''
+            : 
             <div className="col-md-3 col-sm-6">
               <div className="shop-product">
                 <div className="product-thumb">
                   <a href="#">
-                    <img src={ single1 } alt="" />
+                    <img src={ data.photo } alt="" />
                   </a>
                 </div>
                 <div className="product-info">
-                  <h4 className="upper"><a href="#">Premium Notch Blazer</a></h4><span>$79.99</span>
+                  <h4 className="upper"><a href="#">{ data.name }</a></h4><span>${ data.price }</span>
                   <div className="save-product"><a href="#"><i className="icon-heart"></i></a>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="col-md-3 col-sm-6">
-              <div className="shop-product">
-                <div className="product-thumb">
-                  <a href="#">
-                    <img src="images/shop/2.jpg" alt="" />
-                  </a>
-                </div>
-                <div className="product-info">
-                  <h4 className="upper"><a href="#">Premium Suit Blazer</a></h4><span>$199.99</span>
-                  <div className="save-product"><a href="#"><i className="icon-heart"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 col-sm-6">
-              <div className="shop-product">
-                <div className="product-thumb">
-                  <a href="#">
-                    <img src="images/shop/3.jpg" alt="" />
-                  </a>
-                </div>
-                <div className="product-info">
-                  <h4 className="upper"><a href="#">Vintage Sweatshirt</a></h4><span>$99.99</span>
-                  <div className="save-product"><a href="#"><i className="icon-heart"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-3 col-sm-6">
-              <div className="shop-product">
-                <div className="product-thumb">
-                  <a href="#">
-                    <img src="images/shop/4.jpg" alt="" />
-                  </a>
-                </div>
-                <div className="product-info">
-                  <h4 className="upper"><a href="#">Longline Jersey Jacket</a></h4><span>$19.99</span>
-                  <div className="save-product"><a href="#"><i className="icon-heart"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
+
+            )
+          }
+
           </div>
         </div>
       </div>

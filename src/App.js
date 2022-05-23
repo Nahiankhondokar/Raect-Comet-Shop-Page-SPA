@@ -53,11 +53,13 @@ function App() {
     });
 
     // product
-    axios.get('http://localhost:5050/products')
-    .then( res => {
-      setAllProduct(res.data);
-    });
-
+    setInterval(() => {
+      axios.get('http://localhost:5050/products')
+      .then( res => {
+        setAllProduct(res.data);
+      });
+  
+    }, 3000);
 
   }, [allCat, allTag, allProduct]);
 

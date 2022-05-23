@@ -11,6 +11,7 @@ const AddProduct = ({ allTag, allCat, makeSlug }) => {
     name        : '',
     price       : '',
     sprice      : '',
+    rating      : '',
     categoryId  : '',
     tagId       : '',
     desc        : '',
@@ -29,6 +30,7 @@ const AddProduct = ({ allTag, allCat, makeSlug }) => {
       slug            : makeSlug(product.name),
       price           : product.price,
       sprice          : product.sprice,
+      rating          : product.rating,
       categoryId      : product.categoryId,
       tagId           : product.tagId,
       desc            : product.desc,
@@ -40,6 +42,7 @@ const AddProduct = ({ allTag, allCat, makeSlug }) => {
         name    : '',
         price    : '',
         sprice  : '',
+        rating  : '',
         categoryId   : '',
         tagId    : '',
         desc    : '',
@@ -75,6 +78,10 @@ const AddProduct = ({ allTag, allCat, makeSlug }) => {
                     <Form.Group>
                         <Form.Label>sale Price</Form.Label>
                         <Form.Control value={ product.sprice } onChange={ (e) => setProduct({ ...product, sprice : e.target.value }) }></Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Rating</Form.Label>
+                        <Form.Control type='number' value={ product.rating } onChange={ (e) => setProduct({ ...product, rating : e.target.value }) }></Form.Control>
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Categroy</Form.Label>
