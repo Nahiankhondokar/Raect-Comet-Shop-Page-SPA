@@ -42,18 +42,6 @@
   ],
   "products": [
     {
-      "id": 6,
-      "name": "T-shart",
-      "slug": "t-shart",
-      "price": "500",
-      "rating": "4",
-      "sprice": "450",
-      "categoryId": "10",
-      "tagId": "5",
-      "desc": "25% OFF For New Users! - Buy Black Polyester half sleeve round neck China T-Shirt For Men at lowest prices in Bangladesh. Express Home Delivery in ...",
-      "photo": "https://static-01.daraz.com.bd/p/b854680b82b5d93c190c276b4b58d783.jpg"
-    },
-    {
       "id": 7,
       "name": "panjabi",
       "slug": "panjabi",
@@ -76,18 +64,6 @@
       "photo": "https://static-01.daraz.com.bd/p/c5e13c39ed9f3d5ee320fb6b87006667.jpg",
       "categoryId": "9",
       "tagId": "3"
-    },
-    {
-      "id": 9,
-      "name": "ladies clothes",
-      "slug": "ladies-clothes",
-      "price": "5600",
-      "rating": "1",
-      "sprice": "5200",
-      "categoryId": "9",
-      "tagId": "2",
-      "desc": "Punjabi Suit Latest Designs in Canada | Punjabi Salwar Suits Online\nVisit\nImages may be subject to copyright. Learn More",
-      "photo": "https://images.cbazaar.com/images/Pink-Georgette-Salwar-Suit-SLSAK25131214-pl.jpg"
     },
     {
       "id": 10,
@@ -115,15 +91,15 @@
     },
     {
       "id": 12,
-      "name": "formal dress",
-      "slug": "formal-dress",
+      "name": "formal dress 2022",
       "price": "15000",
       "sprice": "13500",
       "rating": "5",
-      "categoryId": "11",
+      "categoryId": "10",
       "tagId": "3",
       "desc": "Copyright ownership gives the owner the exclusive right to use the work, with some exceptions. When a person creates an original work, fixed in a tangible medium, he or she automatically owns copyright to the work.",
-      "photo": "https://www.fashionbeans.com/wp-content/uploads/2018/09/formal-attire-img-3.jpg"
+      "photo": "https://www.fashionbeans.com/wp-content/uploads/2018/09/formal-attire-img-3.jpg",
+      "updateId": 12
     }
   ],
   "categories": [
@@ -139,8 +115,8 @@
     },
     {
       "id": 10,
-      "name": "batminton play best",
-      "slug": "batminton-play-best"
+      "name": "batminton play",
+      "slug": "batminton-play"
     },
     {
       "id": 11,

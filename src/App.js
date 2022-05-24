@@ -15,6 +15,8 @@ import AddTag from './Component/Admin/AddItems/AddTag';
 import AddProduct from './Component/Admin/AddItems/AddProduct';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import ViewProduct from './Component/Admin/AddItems/ViewProduct';
+import EditProduct from './Component/Admin/AddItems/EditProduct';
 
 
 
@@ -79,13 +81,17 @@ function App() {
         <Route path="/" element={ <Home /> } />
         <Route path="/shop" element={ <Shop allTag={ allTag } allCat={ allCat } allProduct={ allProduct } setAllProduct={ setAllProduct } /> } />
         <Route path="/shop/:slug" element={ <SingleProduct allCat={ allCat } /> } />
+
         <Route path="/admin" element={ <Dashboard /> }>
           <Route path="/admin/category" element={ <Category allCat={ allCat } makeSlug={ makeSlug } /> } />
           <Route path="/admin/tag" element={ <Tag allTag={ allTag } makeSlug={ makeSlug } /> } />
           <Route path="/admin/add-tag" element={ <AddTag /> } />
-          <Route path="/admin/product" element={ <Product allProduct={ allProduct } /> } />
+          <Route path="/admin/product" element={ <Product allProduct={ allProduct } allTag={ allTag } allCat={ allCat } /> } />
           <Route path="/admin/add-product" element={ <AddProduct allTag={ allTag } allCat={ allCat } makeSlug={ makeSlug } /> } />
+          <Route path="/admin/product-view/:id" element={ <ViewProduct allTag={ allTag } allCat={ allCat } /> } />
+          <Route path="/admin/product-edit/:id" element={ <EditProduct allTag={ allTag } allCat={ allCat } /> } />
         </Route>
+
       </Routes>
     
       <Footer />

@@ -4156,6 +4156,11 @@ footer.dark p {
     margin-left: 0;
     margin-right: 10px;
   }
+
+  #topnav {
+    background-color: white;
+  }
+
   #topnav .navigation-menu > li .submenu {
     position: absolute;
     top: 100%;

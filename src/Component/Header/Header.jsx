@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from "./../../_assets/images/logo_light.png";
+import Logo from "./../../_assets/images/logo_dark.png";
 import banner from "./../../_assets/images/bg/19.jpg";
 
 
@@ -8,7 +8,7 @@ import banner from "./../../_assets/images/bg/19.jpg";
 const Header = () => {
   return (
     <>
-        <header id="topnav">
+        <header id="topnav" className='shadow'>
         <div className="container">
         
             <div className="logo">

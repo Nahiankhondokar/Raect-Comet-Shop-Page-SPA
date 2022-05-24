@@ -3,13 +3,23 @@ import { Card, Table, Button, Container, Row, Col, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-const Product = ({ allProduct }) => {
+const Product = ({ allProduct, allTag, allCat }) => {
+
 
   // product delete
   const handleProductDelete = (id) => {
     axios.delete('http://localhost:5050/products/' + id)
     .then();
   }
+
+  // let cat = (id) => {
+  //   axios.get('http://localhost:5050/categories/' + id)
+  //   .then(res => {
+  //     return res.data.name;
+  //   });
+  // }
+
+  // console.log(cat('10'));
 
   return (
     <>
@@ -44,8 +54,8 @@ const Product = ({ allProduct }) => {
                     <td>{ data.categoryId }</td>
                     <td>{ data.tagId }</td>
                     <td>
-                      <Button className='btn-sm' variant='primary'>view</Button>
-                      <Button className='btn-sm' variant='warning'>Edit</Button>
+                      <Link to={ `/admin/product-view/${data.id}` } className='btn btn-info btn-sm' variant='primary'>view</Link>
+                      <Link to={ `/admin/product-edit/${ data.id }` } className='btn btn-warning btn-sm' variant='warning'>Edit</Link>
                       <Button onClick={ () => handleProductDelete(data.id) } className='btn-sm' variant='danger'>Delete</Button>
                     </td>
                   </tr>
