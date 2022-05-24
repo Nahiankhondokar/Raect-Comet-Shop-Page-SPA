@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Rating from '../Admin/Rating';
 import single1 from './../../_assets/images/shop/single-1.jpg';
 
-const SingleProduct = () => {
+const SingleProduct = ({ allCat }) => {
 
   // params
   const { slug } = useParams();
@@ -25,7 +25,6 @@ const SingleProduct = () => {
   });
 
 
-
   // Get all single product data
   useEffect( () => {
 
@@ -41,7 +40,7 @@ const SingleProduct = () => {
       setRelated(res.data);
     });
 
-  }, [singleProduct, related]);
+  }, []);
 
   return (
     <>
@@ -113,7 +112,13 @@ const SingleProduct = () => {
                 <ul>
                   <li><span>Sizes:</span> S, M, L, XL</li>
                   <li><span>Colors:</span> Blue, Red, Grey</li>
-                  <li><span>Category:</span><a href="#">Blazers</a>
+                  <li><span>Category:</span><a href="#">
+                    {
+                      allCat.map((data) => 
+                      data.id == singleProduct.categoryId ? data.name : ''
+                      )
+                    }
+                  </a>
                   </li>
                   <li><span>Tags:</span><a href="#">Outfit</a>-<a href="#">Jeans</a>
                   </li>

@@ -78,7 +78,7 @@ function App() {
       <Routes>
         <Route path="/" element={ <Home /> } />
         <Route path="/shop" element={ <Shop allTag={ allTag } allCat={ allCat } allProduct={ allProduct } setAllProduct={ setAllProduct } /> } />
-        <Route path="/shop/:slug" element={ <SingleProduct /> } />
+        <Route path="/shop/:slug" element={ <SingleProduct allCat={ allCat } /> } />
         <Route path="/admin" element={ <Dashboard /> }>
           <Route path="/admin/category" element={ <Category allCat={ allCat } makeSlug={ makeSlug } /> } />
           <Route path="/admin/tag" element={ <Tag allTag={ allTag } makeSlug={ makeSlug } /> } />
