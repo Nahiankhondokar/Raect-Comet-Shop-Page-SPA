@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import LeftSidebar from '../Partials/LeftSidebar';
 import product from "./../../_assets/images/shop/1.jpg";
 
-const Shop = ({ allProduct, setAllProduct }) => {
+const Shop = ({ allProduct, setAllProduct, allCat }) => {
 
   
   return (
@@ -15,7 +15,7 @@ const Shop = ({ allProduct, setAllProduct }) => {
         <div className="row">
           <div className="col-md-3 hidden-sm hidden-xs">
 
-            <LeftSidebar setAllProduct={ setAllProduct } />
+            <LeftSidebar setAllProduct={ setAllProduct } allCat={allCat} />
 
 
           </div>

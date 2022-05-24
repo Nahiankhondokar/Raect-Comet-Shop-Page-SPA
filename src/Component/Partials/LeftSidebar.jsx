@@ -2,19 +2,36 @@ import React, { useEffect, useState } from 'react';
 import product from "./../../_assets/images/shop/1.jpg";
 import axios from 'axios';
 
-const LeftSidebar = ({ setAllProduct }) => {
+const LeftSidebar = ({ setAllProduct, allCat }) => {
 
   // product seach 
   const [search, setSearch] = useState([]);
 
 
-  // Get all search product
-  useEffect(() => {
+  // Category waise product search 
+  const handleCatSearch = (e, id) => {
     
-    axios.get(`http://localhost:5050/products?q=${search}`)
+    e.preventDefault();
+
+    axios.get(`http://localhost:5050/categories/${ id }/products`)
     .then(res => {
       setAllProduct(res.data);
     });
+
+
+  }
+
+
+  // Get all search product
+  useEffect(() => {
+
+    if(search !== ''){
+      axios.get(`http://localhost:5050/products?q=${search}`)
+      .then(res => {
+        setAllProduct(res.data);
+      });
+  
+    }
 
   });
 
@@ -31,18 +48,15 @@ const LeftSidebar = ({ setAllProduct }) => {
               <div className="widget">
                 <h6 className="upper">Categories</h6>
                 <ul className="nav">
-                  <li><a href="#">Beauty</a>
-                  </li>
-                  <li><a href="#">Blazers</a>
-                  </li>
-                  <li><a href="#">Bags</a>
-                  </li>
-                  <li><a href="#">Jeans</a>
-                  </li>
-                  <li><a href="#">Shorts</a>
-                  </li>
-                  <li><a href="#">Dresses</a>
-                  </li>
+
+                  {
+                    allCat.map((data) =>
+                    <li>
+                      <a onClick={ (e) => handleCatSearch(e, data.id) } href={ data.id }>{ data.name }</a>
+                    </li>
+                    )
+                  }
+                  
                 </ul>
               </div>
                
