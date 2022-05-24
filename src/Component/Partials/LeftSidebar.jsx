@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import product from "./../../_assets/images/shop/1.jpg";
 import axios from 'axios';
 
-const LeftSidebar = ({ setAllProduct, allCat }) => {
+const LeftSidebar = ({ setAllProduct, allCat, allTag }) => {
 
   // product seach 
   const [search, setSearch] = useState([]);
@@ -12,14 +12,23 @@ const LeftSidebar = ({ setAllProduct, allCat }) => {
   const handleCatSearch = (e, id) => {
     
     e.preventDefault();
-
+    setSearch('');
     axios.get(`http://localhost:5050/categories/${ id }/products`)
     .then(res => {
       setAllProduct(res.data);
     });
-
-
   }
+
+    // Tag waise product search 
+    const handleTagSearch = (e, id) => {
+    
+      e.preventDefault();
+      setSearch('');
+      axios.get(`http://localhost:5050/tags/${ id }/products`)
+      .then(res => {
+        setAllProduct(res.data);
+      });
+    }
 
 
   // Get all search product
@@ -59,6 +68,20 @@ const LeftSidebar = ({ setAllProduct, allCat }) => {
                   
                 </ul>
               </div>
+
+               <div className="widget">
+                <h6 className="upper">Popular Tags</h6>
+                <div className="tags clearfix">
+
+                  {
+                    allTag.map((data) =>
+                      <a onClick={ (e) => handleTagSearch(e, data.id) } href={ data.id }>{ data.name }</a>
+                    )
+                  }
+                  
+
+                </div>
+              </div>
                
               <div className="widget">
                 <h6 className="upper">Trending Products</h6>
@@ -87,11 +110,7 @@ const LeftSidebar = ({ setAllProduct, allCat }) => {
                 </ul>
               </div>
                   
-              <div className="widget">
-                <h6 className="upper">Popular Tags</h6>
-                <div className="tags clearfix"><a href="#">Hipster</a><a href="#">Fashion</a><a href="#">Shirt</a><a href="#">Modern</a><a href="#">Vintage</a>
-                </div>
-              </div>
+             
               
           </div>
     
