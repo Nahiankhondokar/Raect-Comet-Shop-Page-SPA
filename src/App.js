@@ -53,15 +53,19 @@ function App() {
     });
 
     // product
-    setInterval(() => {
+    let cler = setInterval(() => {
       axios.get('http://localhost:5050/products')
       .then( res => {
         setAllProduct(res.data);
       });
-  
-    }, 3000);
 
-  }, [allCat, allTag, allProduct]);
+      clearInterval(cler);
+  
+    }, 2000);
+
+
+
+  }, []);
 
 
   return (
@@ -73,7 +77,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={ <Home /> } />
-        <Route path="/shop" element={ <Shop allProduct={ allProduct } /> } />
+        <Route path="/shop" element={ <Shop allProduct={ allProduct } setAllProduct={ setAllProduct } /> } />
         <Route path="/shop/:slug" element={ <SingleProduct /> } />
         <Route path="/admin" element={ <Dashboard /> }>
           <Route path="/admin/category" element={ <Category allCat={ allCat } makeSlug={ makeSlug } /> } />

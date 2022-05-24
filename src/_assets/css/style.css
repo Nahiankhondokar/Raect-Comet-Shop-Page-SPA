@@ -2832,6 +2832,7 @@ section.parallax .countdown span {
 }
 .sidebar .widget ul.nav > li {
   margin-bottom: 0;
+  width : 100%;
 }
 .sidebar .widget ul.nav > li:last-child > a {
   border-bottom: 0;

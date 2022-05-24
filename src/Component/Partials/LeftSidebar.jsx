@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import product from "./../../_assets/images/shop/1.jpg";
+import axios from 'axios';
 
-const LeftSidebar = () => {
+const LeftSidebar = ({ setAllProduct }) => {
+
+  // product seach 
+  const [search, setSearch] = useState([]);
+
+
+  // Get all search product
+  useEffect(() => {
+    
+    axios.get(`http://localhost:5050/products?q=${search}`)
+    .then(res => {
+      setAllProduct(res.data);
+    });
+
+  });
+
   return (
     <>
-    
-    <div className="widget">
-                <h6 className="upper">Search Shop</h6>
-                <form>
-                  <input type="text" placeholder="Search.." className="form-control"/>
-                </form>
-            </div>
+          <div className="sidebar">
+              <div className="widget">
+                  <h6 className="upper">Search Shop</h6>
+                  <form>
+                    <input value={ search } onChange={ (e) => setSearch(e.target.value) } type="text" placeholder="Search.." className="form-control"/>
+                  </form>
+              </div>
 
-            <div className="sidebar">
               <div className="widget">
                 <h6 className="upper">Categories</h6>
                 <ul className="nav">
@@ -64,7 +79,7 @@ const LeftSidebar = () => {
                 </div>
               </div>
               
-            </div>
+          </div>
     
     </>
   )
