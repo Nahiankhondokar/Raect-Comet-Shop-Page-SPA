@@ -57,7 +57,7 @@ const AddProduct = ({ allTag, allCat, makeSlug }) => {
 
   return (
     <>
-    <Container>
+      <Container>
     <Link to='/admin/product' className='btn btn-primary btn-sm mb-2' variant='info'>All Category</Link>
         <Row>
           <Col md={ 6 } className='m-auto mt-3'>

@@ -15,7 +15,7 @@ const Dashboard = () => {
                         <li className="list-group-item"><Link to='/admin/category' href="#">Categroy</Link></li>
                         <li className="list-group-item"><Link to='/admin/tag' href="#">Tag</Link></li>
                         <li className="list-group-item"><Link to='/admin/product' href="#">Product</Link></li>
-                        <li className="list-group-item"><a href="#">Extra</a></li>
+                        <li className="list-group-item"><Link to='/admin/student' href="#">Class Component</Link></li>
                     </ul>
                 </Col>
                 <Col md={ 9 }>

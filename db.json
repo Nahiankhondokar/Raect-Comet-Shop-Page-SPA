@@ -38,6 +38,11 @@
       "id": 6,
       "name": "mercedice benz",
       "slug": "mercedice-benz"
+    },
+    {
+      "id": 7,
+      "name": "empty tag",
+      "slug": "empty-tag"
     }
   ],
   "products": [
@@ -127,6 +132,11 @@
       "id": 12,
       "name": "women clothes",
       "slug": "women-clothes"
+    },
+    {
+      "id": 13,
+      "name": "test",
+      "slug": "test"
     }
   ]
 }

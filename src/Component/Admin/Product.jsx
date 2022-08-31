@@ -51,8 +51,16 @@ const Product = ({ allProduct, allTag, allCat }) => {
                     <td>{ data.name }</td>
                     <td>{ data.price }</td>
                     <td>{ data.sprice }</td>
-                    <td>{ data.categoryId }</td>
-                    <td>{ data.tagId }</td>
+                    <td>
+                      { 
+                        (data.categoryId == '') ? "Nill" : data.categoryId
+                      }
+                    </td>
+                    <td>
+                      { 
+                        (data.tagId == '') ? "Nill" : data.tagId
+                      }
+                    </td>
                     <td>
                       <Link to={ `/admin/product-view/${data.id}` } className='btn btn-info btn-sm' variant='primary'>view</Link>
                       <Link to={ `/admin/product-edit/${ data.id }` } className='btn btn-warning btn-sm' variant='warning'>Edit</Link>
